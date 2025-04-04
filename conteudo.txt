@@ -1,0 +1,109 @@
+#include <stdio.h>   // Função que troca os ponteiros usando ponteiro para ponteiro
+void trocar(int **ptr1, int **ptr2) {
+    int *temp = *ptr1; // Armazena temporariamente o valor do primeiro ponteiro
+    *ptr1 = *ptr2;     // O primeiro ponteiro agora aponta para o que o segundo apontava
+    *ptr2 = temp;      // O segundo ponteiro agora aponta para o que o primeiro apontava
+}   int main() {
+    int a = 10, b = 20;
+    int *p1 = &a;
+    int *p2 = &b;       printf("Antes da troca:\n");
+    printf("p1 aponta para: %d\n", *p1);
+    printf("p2 aponta para: %d\n", *p2);       // Chamando a função que troca os ponteiros
+    trocar(&p1, &p2);       printf("\nDepois da troca:\n");
+    printf("p1 aponta para: %d\n", *p1);
+    printf("p2 aponta para: %d\n", *p2);       return 0;
+}
+
+##############################
+
+#include <stdio.h>
+
+// Função que multiplica dois inteiros e retorna o resultado por referência
+void multiplicar(int *a, int *b, int *resultado) {
+    *resultado = (*a) * (*b);
+}
+
+int main() {
+    int x = 5, y = 7;         // Criando as variáveis x e y
+    int resultado;            // Criando a variável inteira resultado
+
+    // Chamando a função passando os ponteiros
+    multiplicar(&x, &y, &resultado);
+
+    // Exibindo o resultado
+    printf("%d x %d = %d\n", x, y, resultado);
+
+    return 0;
+}
+
+#####################################
+
+#include <stdio.h> // Necessário para printf
+
+// Função que tenta trocar os valores de dois inteiros (mas não funciona corretamente com passagem por valor)
+void swap(int a, int b) {
+    int temp = a;
+    a = b;
+    b = temp;
+}
+
+int main() {
+    int x = 10, y = 20;
+    swap(x, y);
+    
+    // Isso irá exibir: x = 10, y = 20, pois a troca não afeta as variáveis originais
+    printf("x = %d, y = %d\n", x, y);
+    
+    return 0;
+}
+
+#######################################
+
+#include <stdio.h> // Necessário para printf
+
+// Função que troca os valores de dois inteiros usando ponteiros
+void swap(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+int main() {
+    int x = 10, y = 20;
+
+    // Chamando a função passando os endereços de x e y
+    swap(&x, &y);
+
+    // Agora sim! Isso irá exibir: x = 20, y = 10
+    printf("x = %d, y = %d\n", x, y);
+
+    return 0;
+}
+
+##########################################
+
+
+#include <stdio.h> // Necessário para printf
+
+// Função que troca os valores usando ponteiros
+void trocar(int *a, int *b) {
+    int temp = *a;   // Armazena temporariamente o valor apontado por 'a'
+    *a = *b;         // Atribui o valor apontado por 'b' ao local apontado por 'a'
+    *b = temp;       // Atribui o valor temporário ao local apontado por 'b'
+}
+
+int main() {
+    int x = 10, y = 20;
+
+    printf("Antes da troca:\n");
+    printf("x = %d, y = %d\n", x, y);
+
+    // Chamando a função para trocar os valores
+    trocar(&x, &y);
+
+    printf("\nDepois da troca:\n");
+    printf("x = %d, y = %d\n", x, y);
+
+    return 0;
+}
+
